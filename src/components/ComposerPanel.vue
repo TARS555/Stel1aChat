@@ -23,6 +23,7 @@
     <div class="composer-footer">
       <p class="composer-hint">
         Enter 发送，Shift + Enter 换行
+        <span v-if="voiceInterimText" class="voice-interim"> · 正在识别：{{ voiceInterimText }}</span>
         <span v-if="voiceError"> · {{ voiceError }}</span>
       </p>
       <button class="send-action" :disabled="disabled || !modelValue.trim()" @click="$emit('submit')">
@@ -44,6 +45,7 @@ const props = defineProps<{
   voiceSupported: boolean;
   voiceStatus: VoiceStatus;
   voiceError: string;
+  voiceInterimText: string;
 }>();
 
 defineEmits<{

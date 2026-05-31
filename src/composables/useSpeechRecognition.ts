@@ -1,21 +1,43 @@
 import { computed, ref } from 'vue';
+import { getSpeechErrorMessage, normalizeSpeechText, parseSpeechResult } from './speechRecognitionUtils';
 
 export type VoiceStatus = 'idle' | 'recording' | 'processing';
 
 export function useSpeechRecognition(onText: (text: string) => void) {
   const status = ref<VoiceStatus>('idle');
   const error = ref('');
+  const interimText = ref('');
   let recognition: SpeechRecognition | null = null;
 
   const supported = computed(() => typeof window !== 'undefined' && !!(window.SpeechRecognition || window.webkitSpeechRecognition));
 
   const stop = () => {
+    if (status.value !== 'recording') {
+      return;
+    }
+
     recognition?.stop();
     status.value = 'processing';
   };
 
+  const cancel = () => {
+    if (status.value === 'idle') {
+      return;
+    }
+
+    recognition?.abort();
+    recognition = null;
+    interimText.value = '';
+    status.value = 'idle';
+  };
+
   const start = () => {
+    if (status.value !== 'idle') {
+      return;
+    }
+
     error.value = '';
+    interimText.value = '';
 
     const SpeechRecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognitionConstructor) {
@@ -29,21 +51,26 @@ export function useSpeechRecognition(onText: (text: string) => void) {
     recognition.interimResults = true;
 
     recognition.onresult = (event) => {
-      const transcript = Array.from(event.results)
-        .map((result) => result[0].transcript)
-        .join('');
+      const result = parseSpeechResult(event);
+      interimText.value = result.interimText;
+      const finalText = normalizeSpeechText(result.finalText);
 
-      if (transcript.trim()) {
-        onText(transcript.trim());
+      if (finalText) {
+        status.value = 'processing';
+        interimText.value = '';
+        onText(finalText);
       }
     };
 
     recognition.onerror = (event) => {
-      error.value = `语音识别失败：${event.error}`;
+      error.value = getSpeechErrorMessage(event.error);
+      interimText.value = '';
       status.value = 'idle';
     };
 
     recognition.onend = () => {
+      recognition = null;
+      interimText.value = '';
       status.value = 'idle';
     };
 
@@ -52,7 +79,9 @@ export function useSpeechRecognition(onText: (text: string) => void) {
   };
 
   return {
+    cancel,
     error,
+    interimText,
     start,
     status,
     stop,

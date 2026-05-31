@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
+import { formatAppendedInput } from '@/composables/speechRecognitionUtils';
 import {
   clearKnowledgeDocuments,
   deleteKnowledgeDocument,
@@ -209,7 +210,7 @@ export const useChatStore = defineStore('chat', () => {
   }
 
   function appendInput(text: string) {
-    input.value = text;
+    input.value = formatAppendedInput(input.value, text);
   }
 
   function switchSession(sessionId: string) {

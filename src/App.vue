@@ -74,6 +74,7 @@
           :document-count="store.documentCount"
           :rag-enabled="store.ragEnabled"
           :voice-error="speech.error.value"
+          :voice-interim-text="speech.interimText.value"
           :voice-status="speech.status.value"
           :voice-supported="speech.supported.value"
           @submit="store.sendMessage()"

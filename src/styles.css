@@ -642,6 +642,10 @@ button:disabled {
   outline: none;
 }
 
+.voice-interim {
+  color: var(--accent-strong);
+}
+
 .send-action {
   padding: 10px 18px;
   border-radius: 999px;
