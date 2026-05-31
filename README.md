@@ -1,4 +1,4 @@
-# yuan-agent
+# Stel1aChat
 
 > A lightweight Agent chat workspace built with Vue 3, Vite, Pinia, TypeScript and Express.
 
