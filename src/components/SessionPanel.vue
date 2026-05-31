@@ -2,7 +2,7 @@
   <aside class="session-panel">
     <div class="session-panel-header">
       <div>
-        <p class="section-label">yuan-agent conversations</p>
+        <p class="section-label">Stel1aChat conversations</p>
         <h2>最近对话</h2>
       </div>
       <button class="nav-icon-button" :disabled="disabled" @click="$emit('new-session')">＋</button>

@@ -2,7 +2,7 @@
   <aside class="sidebar-panel">
     <div>
       <p class="eyebrow">Session Control</p>
-      <h1>Qwen Agent Console</h1>
+      <h1>Stel1aChat Console</h1>
       <p class="sidebar-copy">
         面向大模型对话、RAG 检索、工具调用和语音输入的前端工作台。
       </p>

@@ -109,7 +109,7 @@ async function createMcpSession() {
 
   mcpSessionPromise = (async () => {
     const client = new McpClient({
-      name: 'yuan-agent-chat-orchestrator',
+      name: 'stel1achat-orchestrator',
       version: '1.0.0'
     });
 

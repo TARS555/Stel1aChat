@@ -1,5 +1,5 @@
 <template>
-  <main class="yuan-agent-page">
+  <main class="stel1achat-page">
     <div v-if="store.sidebarOpen" class="mobile-mask" @click="store.closeSidebar"></div>
 
     <section class="app-layout">
@@ -16,8 +16,8 @@
             <span class="logo-orbit logo-orbit-b"></span>
           </div>
           <div class="brand-copy">
-            <p class="sidebar-overline">yuan-agent workspace</p>
-            <h2>yuan-agent</h2>
+            <p class="sidebar-overline">Stel1aChat workspace</p>
+            <h2>Stel1aChat</h2>
             <span class="brand-subline">多模态知识协作台</span>
           </div>
         </div>

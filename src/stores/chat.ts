@@ -9,8 +9,8 @@ import {
 } from '@/services/qwen';
 import type { ChatMessage, ChatSession, KnowledgeDocument, QwenMessage, ToolInvocation } from '@/types/chat';
 
-const SESSION_STORAGE_KEY = 'yuan-agent-chat-sessions-v2';
-const ACTIVE_SESSION_KEY = 'yuan-agent-active-session-id-v2';
+const SESSION_STORAGE_KEY = 'stel1achat-sessions-v2';
+const ACTIVE_SESSION_KEY = 'stel1achat-active-session-id-v2';
 
 function uid(prefix: string) {
   return `${prefix}-${crypto.randomUUID()}`;
@@ -39,7 +39,7 @@ function createSession(title = '新对话'): ChatSession {
     title,
     createdAt: now,
     updatedAt: now,
-    messages: [createInitialAssistantMessage('你好，我是你的 yuan-agent 助手。你可以直接提问，也可以先上传资料，让我通过后端向量检索结合工具调用来回答。')]
+    messages: [createInitialAssistantMessage('你好，我是你的 Stel1aChat 助手。你可以直接提问，也可以先上传资料，让我通过后端向量检索结合工具调用来回答。')]
   };
 }
 
@@ -104,7 +104,7 @@ function deserializeSessions() {
       const title = typeof session.title === 'string' && session.title.trim() ? session.title : '新对话';
       const messages = Array.isArray(session.messages) && session.messages.length
         ? session.messages
-        : [createInitialAssistantMessage('你好，我是你的 yuan-agent 助手。')];
+        : [createInitialAssistantMessage('你好，我是你的 Stel1aChat 助手。')];
 
       return {
         ...session,

@@ -250,7 +250,7 @@ function toErrorContent(error) {
 }
 
 const server = new McpServer({
-  name: 'yuan-agent-mcp-server',
+  name: 'stel1achat-mcp-server',
   version: '1.0.0'
 });
 
