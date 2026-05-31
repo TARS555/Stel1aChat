@@ -2,7 +2,7 @@
 
 > A lightweight Agent chat workspace built with Vue 3, Vite, Pinia, TypeScript and Express.
 
-`yuan-agent` 是一个面向大模型对话与 Agent 场景的 Web 端演示项目，聚焦以下核心能力：
+`Stel1aChat` 是一个面向大模型对话与 Agent 场景的 Web 端演示项目，聚焦以下核心能力：
 
 - 流式响应与多轮上下文管理
 - RAG 检索增强与引用来源展示
@@ -120,13 +120,13 @@ cp .env.example .env.local
 
 填写以下变量：
 
-| Name | Description | Default |
-| --- | --- | --- |
-| `QWEN_API_KEY` | DashScope / Qwen API Key | - |
-| `QWEN_BASE_URL` | Qwen compatible endpoint | `https://dashscope.aliyuncs.com/compatible-mode/v1` |
-| `QWEN_MODEL` | Chat model name | `qwen-plus` |
-| `QWEN_EMBEDDING_MODEL` | Embedding model name | `text-embedding-v3` |
-| `SERVER_PORT` | Local server port | `8787` |
+| Name                   | Description              | Default                                             |
+| ---------------------- | ------------------------ | --------------------------------------------------- |
+| `QWEN_API_KEY`         | DashScope / Qwen API Key | -                                                   |
+| `QWEN_BASE_URL`        | Qwen compatible endpoint | `https://dashscope.aliyuncs.com/compatible-mode/v1` |
+| `QWEN_MODEL`           | Chat model name          | `qwen-plus`                                         |
+| `QWEN_EMBEDDING_MODEL` | Embedding model name     | `text-embedding-v3`                                 |
+| `SERVER_PORT`          | Local server port        | `8787`                                              |
 
 ### 3. Start development server
 
